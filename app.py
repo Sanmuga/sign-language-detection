@@ -3,6 +3,9 @@ import numpy as np
 import tensorflow as tf
 from PIL import Image
 from flask import Flask, render_template, Response, jsonify
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # Suppress TensorFlow logs
+
 
 TFLITE_PATH = "./models/model_mobilenet_v2.tflite"
 IMAGE_SIZE = (160, 160)
