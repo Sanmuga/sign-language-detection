@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Language Recognition</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="header-image">
+        <img src="{{ url_for('static', filename='image .jpg') }}" alt="Sign Language Demo">
+    </div>
+    
+    <div class="container">
+        <h1>Sign Language Recognition</h1>
+        <div class="video-section">
+            <img src="{{ url_for('video_feed') }}" id="video-feed" alt="Video Feed">
+        </div>
+        <div class="output-section">
+            <h2>Detected Text:</h2>
+            <p id="detected-text">Loading...</p>
+        </div>
+    </div>
+
+    <script>
+        function fetchTextOutput() {
+            fetch('/text_output')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('detected-text').innerText = data.text;
+                });
+        }
+        setInterval(fetchTextOutput, 1000);
+    </script>
+</body>
+</html>
