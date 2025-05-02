@@ -1,5 +1,6 @@
+Flask==2.3.2
+gunicorn
 opencv-python
 numpy
 tensorflow
 Pillow
-Flask
