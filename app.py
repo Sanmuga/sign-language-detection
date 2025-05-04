@@ -4,7 +4,7 @@ from flask import Flask, render_template, Response
 from helper import DetectSignLang
 import os
 
-
+app = Flask(__name__)
 detectSignLang=DetectSignLang()
 
 @app.route('/')
@@ -47,4 +47,5 @@ def video_off():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    port = int(os.environ.get("PORT", 5000))  # Ensure the port is set from environment or default to 5000
+    app.run(host='0.0.0.0', port=port, debug=True)
